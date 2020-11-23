@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Gen-Tree-Lite</title>
+    <!-- Import Libs -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script> -->
+    <!-- <script src="https://unpkg.com/ccapture.js@1.1.0/build/CCapture.all.min.js"></script> -->
+    <!-- Import My Functions -->
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
+    </script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/lib/alea.min.js">
+    </script> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- calc functions -->
+    <script src="js/calcFunctions/calcTree.js"></script>
+    <script src="js/calcFunctions/calcLeaf.js"></script>
+
+    <!-- draw functions -->
+    <script src="js/drawFunctions/drawTree.js"></script>
+    <script src="js/drawFunctions/drawSeg.js"></script>
+    <script src="js/drawFunctions/drawLeaf.js"></script>
+    <script src="js/drawFunctions/drawBG.js"></script>
+    <script src="js/drawFunctions/drawLeafCanvas.js"></script>
+
+    <!-- <script src="prng.js"></script> -->
+    <script src="js/layout.js"></script>
+    <script src="js/sketch1.js"></script>
+    <script src="js/dashboard.js"></script>
+    
+  </head>
+
+  <body>
+
+    <div id="container">
+      <div class="app-container">
+
+        <!-- DRAWING -->
+        <div class="app-container-item">
+          <!-- THE CANVAS -->
+          <div id="drawing-container">
+            <!-- TREES LAYER -->
+                <canvas id="layer1"></canvas> 
+            <!-- BG LAYERS -->
+                <canvas id="layer2"></canvas>
+          </div>
+
+
+
+        </div>
+
+        <!-- GUI -->
+        <div class="app-container-item">
+
+          <!-- THE GUI -->
+          <div class="input-form-container" id="input-form-container">
+
+            <!-- TABS -->
+            <div class="tab">
+              <button class="tablinks" onclick="openCity(event, 'Main')" name="Main">Main</button>
+              <button class="tablinks" onclick="openCity(event, 'Trees')" id="defaultOpen">Tree</button>
+              <button class="tablinks" onclick="openCity(event, 'Leaves')">Leaves</button>
+              <button class="tablinks" onclick="openCity(event, 'Space')">Space</button>
+              <button class="tablinks" onclick="openCity(event, 'Sky')">Sky</button>
+              <br>
+              <button class="tablinks" onclick="openCity(event, 'Support')">Coffee</button>
+            </div>
+
+
+
+            <!-- INPUT FORM -->
+            <div id="input-form">
+
+              <!-- Main -->
+              <div id="Main" class="tabcontent">
+                <div class="button-panel">     
+                  <p>Hey, here's some info about the app...</p> 
+                  <button type="button" class="reseed" onclick="loadPreset1()">Preset 1</button>
+                  <button type="button" class="reseed" onclick="loadPreset2()">Preset 2</button>
+                  <button type="button" class="reseed" onclick="loadPreset3()">Preset 3</button>
+                  <button type="button" class="reseed" onclick="loadPreset4()">Preset 4</button>
+                  <br><br><br>
+                  <button type="button" class="reseed" onclick="combine()">Combine</button> 
+                  <br><br><br>
+                  <button type="button" class="reseed" id="save-img-button">SaveImg</button>    
+
+                  <a id="link"></a>               
+                </div>
+                <!-- SHADING AND TEXTURE -->
+                <div class="grid-container">
+
+                  <div class="checkboxes">
+                    <label> <input type="checkbox" id="shadingOn"> <span>: Shading</span> </label>
+                  </div>
+
+                  <div>
+                    <h4>Shading Intensity</h4>
+                    <input type="number" min="0" max="1" step="0.1" id="tree17"/>
+                  </div>
+
+                </div>
+                <div class="grid-container">
+
+                  <div class="checkboxes">
+                    <label> <input type="checkbox" id="textureOn"> <span>: Texture</span> </label>
+                  </div>
+
+                  <div>
+                    <h4>Texture Intensity</h4>
+                    <input type="number" min="0" max="1" step="0.1" id="tree18"/>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Trees -->
+              <div id="Trees" class="tabcontent">
+
+                <h3>Tree Properties</h3>
+                <div class="input-section">                    
+                  
+                  <div class="grid-container">
+
+                    <!-- Tree Seed -->
+                    <div class="grid-item">
+                      <div class="control-name">Seed #</div>
+                      <div class="control">
+                        <button type="button" class="reseed" onclick="bumpSeedDown()">&#x2193;</button>
+                        <input type="number" min="0" max="100" id="seed01"/>   
+                        <button type="button" class="reseed" onclick="bumpSeedUp()">&#x2191;</button>
+                        
+                      </div>
+                    </div>
+
+                    <div class="grid-item" style="display:none">
+                      <div class="control-name">N Trees</div>
+                      <div class="control">
+                        <input type="number" min="0" max="10" id="c03"/><br>
+                      </div>
+                    </div>
+
+                    <!-- Branch Levels -->
+                    <div class="grid-item">
+                      <div class="control-name">Branch Levels</div>
+                      <div class="control">
+                        <!-- <fieldset> -->
+                        <input class="slider" type="range" min="0" max="5" step="1" id="c04" list="bl-scale">
+                        <svg width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
+                          <rect class="range__tick" x="0%" y="3" width="1" height="10"></rect>
+                          <rect class="range__tick" x="20%" y="3" width="1" height="10"></rect>
+                          <rect class="range__tick" x="40%" y="3" width="1" height="10"></rect>
+                          <rect class="range__tick" x="60%" y="3" width="1" height="10"></rect>
+                          <rect class="range__tick" x="80%" y="3" width="1" height="10"></rect>
+                          <rect class="range__tick" x="99%" y="3" width="1" height="10"></rect>
+                        </svg>
+                        <svg width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
+                          <text x="0%" y="10" width="1">0</text>
+                          <text x="20%" y="10" width="1">1</text>
+                          <text x="40%" y="10" width="1">2</text>
+                          <text x="60%" y="10" width="1">3</text>
+                          <text x="80%" y="10" width="1">4</text>
+                          <text x="97%" y="10" width="1">5</text>
+                        </svg>
+                      <!-- </fieldset> -->
+                      </div>                      
+                    </div>
+
+                  </div>
+
+                  <!-- <h3>Position</h3> -->
+                  <!-- <div class="input-section">                    -->
+
+                  <div class="grid-container">                   
+
+                    <div class="grid-item">  
+                      <div class="control-name">X Position</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="1" step="0.02" id="cX"/>
+                      </div>
+                    </div>
+                    
+                    <div class="grid-item">
+                      <div class="control-name">Y Positon</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="1" step="0.02" id="cY"/>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <h3>Branch Properties</h3>
+                <div class="input-section">                    
+      
+                  <div class="grid-container">
+
+                    <div class="grid-item">
+                      <div class="control-name">Presets</div>
+                      <div class="control">
+                        <button type="button" class="element-preset" onclick="loadTree1()">1</button>
+                        <button type="button" class="element-preset" onclick="loadTree2()">2</button>
+                        <button type="button" class="element-preset" onclick="loadTree3()">3</button>
+                      </div>
+                    </div>   
+    
+                    <div class="grid-item">
+                      <div class="control-name">Trunk Length</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="1" step="0.05" id="c13"/>
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Branch Length Ratio</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="1" step="0.05" id="tree15"/>
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Chance</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="5" max="100" step="5" id="c09"/>
+                      </div>
+                    </div>
+      
+                    <div class="grid-item"> 
+                      <div class="control-name">Branch Angle</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="90" step="5" id="c10"/>
+                      </div>
+                    </div>
+
+                    <div class="grid-item" style="display:none">
+                      <h4>Seg Div</h4>
+                      <input class="slider" type="range" min="1" max="100" step="5" id="c11"/>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Angle Range</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="20" step="1" id="c12"/>
+                      </div>
+                    </div>
+                  
+                    <div class="grid-item">
+                      <div class="control-name">Trunk Thickness</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0.005" max="0.1" step="0.005" id="tree14"/>
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Branch Thickness Ratio</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="1" step="0.05" id="tree16"/>
+                      </div>
+                    </div>
+                    
+                    <div class="grid-item">
+                      <div class="control-name">Taper</div>
+                      <div class="control">
+                        <input class="slider" type="range" min="0" max="1" step="0.05" id="c40"/>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="grid-container">                   
+                    
+                    <div class="grid-item">
+                      <div class="control-name">Hue</div>
+                      <div class="control">
+                        <input type="range" min="0" max="255" step="1" class="slider-hue" id="c06">
+                      </div>
+                    </div>
+                    
+                    <div class="grid-item">
+                      <div class="control-name">Sat</div>
+                      <div class="control">
+                        <input type="range" min="0" max="100" step="1" class="slider-sat" id="c07">
+                      </div>
+                    </div>
+                    
+                    <div class="grid-item">
+                      <div class="control-name">Lit</div>
+                      <div class="control">
+                        <input type="range" min="0" max="100" step="1" class="slider-lit" id="c08">
+                      </div>
+                    </div>      
+      
+                  </div>
+
+                </div>
+      
+              </div>
+
+
+              <div id="Leaves" class="tabcontent">
+
+                  <h3>Leaf Properties</h3>
+                  <div class="input-section">                     
+        
+                    <div class="grid-container">
+        
+                      <div class="grid-item">
+                        <div class="checkboxes">
+                        <label> <input type="checkbox" id="c05" onclick="redraw()"/> <span>: On/Off</span> </label>
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">Hue</div>
+                        <div class="control">
+                          <input type="range" min="0" max="255" step="1" class="slider-hue" id="c35"> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">Saturation</div>
+                        <div class="control">
+                          <input type="range" min="0" max="100" step="1" class="slider-sat" id="c36"> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">Lightness</div>
+                        <div class="control">
+                          <input type="range" min="0" max="100" step="1" class="slider-lit" id="c37">  
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <h3>Leafing Properties</h3>
+                  <div class="input-section"> 
+                    
+                    <div class="grid-container">
+                    
+                      <div class="grid-item">
+                        <div class="control-name">Scale</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="0.01" max="1.0" step="0.01" id="c38"/> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">Chance (%)</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="0" max="100" step="5" id="leaf45"/> 
+                        </div>
+                      </div>
+        
+                      <!-- Weight Frac -->
+                      <div class="grid-item" style="display:none">
+                        <h4>WeightFrac</h4>
+                        <input class="slider" type="range" min="0.005" max="0.1" step="0.005" id="leaf40" /> 
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <h3>Shape</h3>
+                  <div class="input-section"> 
+                    <div class="grid-container">
+
+                      <div class="grid-item">
+                        <div class="control-name">Variation</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="0" max="1" step="0.05" id="leaf46"/> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">Stem length</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="0" max="1" step="0.05" id="leaf47"/> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">L1 Ratio</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="1" max="5" step="1" id="leaf41" /> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item">
+                        <div class="control-name">Angle Start</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="0" max="180" step="10" id="leaf42" /> 
+                        </div>
+                      </div>
+
+                      <!-- the actual leaf canvas -->
+                      <div  style="display:none">
+                        <canvas id="leafCanvas""></canvas>   
+                      </div>
+
+                      <div class="grid-item" style="display:none">
+                        <div class="control-name">L2 Ratio</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="1" max="5" step="1" id="leaf43" /> 
+                        </div>
+                      </div>
+
+                      <div class="grid-item" style="display:none">
+                        <div class="control-name">Angle End</div>
+                        <div class="control">
+                          <input class="slider" type="range" min="0" max="180" step="10" id="leaf44" />  
+                        </div>
+                      </div>
+    
+                    </div>    
+        
+                  </div>
+
+              </div>
+
+              <div id="Space" class="tabcontent">
+                <!-- <h2>Space</h2> -->
+                <h3>Moon/Sun</h3> 
+                <div class="input-section">  
+                  
+                  <div class="grid-container">
+                  
+                    <div class="checkboxes">
+                      <label> <input type="checkbox" id="moonOn"> <span>: On/Off</span> </label>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">X-Position</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="moon01">
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Y-Position</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="moon02">
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Radius</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="moon03">
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Glow</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="moon04">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <h3>Stars</h3>
+                <div class="input-section"> 
+                  
+                  <div class="grid-container">
+                  
+                    <div class="checkboxes">
+                      <label> <input type="checkbox" id="starsOn"> <span>: On/Off</span> </label>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Quantity</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="star01">
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Size</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="star02">
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Brightness</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="star03">
+                      </div>
+                    </div>
+
+                  </div>
+      
+                </div>
+
+              </div>
+
+              <div id="Sky" class="tabcontent">
+                <!-- <h2>Sky</h2> -->
+                <h3>Sky</h3>
+                <div class="input-section">  
+
+                  <div class="grid-container">
+                  
+                    <div class="checkboxes">
+                      <label> <input type="checkbox" id="skyOn"> <span>: On/Off</span> </label>
+                    </div>                 
+                    
+                    <div class="grid-item">
+                      <div class="control-name">Hue</div>
+                      <div class="control">
+                        <input type="range" min="0" max="255" step="1" class="slider-hue" id="sky01">
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Saturation</div>
+                        <div class="control">
+                          <input type="range" min="0" max="100" step="1" class="slider-sat" id="sky02">
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Lightness</div>
+                        <div class="control">
+                          <input type="range" min="0" max="100" step="1" class="slider-lit" id="sky03">
+                        </div>
+                    </div>
+
+                  </div>
+
+                  </div>
+
+      
+                <h3>Clouds</h3>
+                <div class="input-section">  
+
+                  <div class="checkboxes">
+                    <label> <input type="checkbox" id="cloudsOn"> <span>: On/Off</span> </label>
+                  </div>
+                  
+                  <div class="grid-item">
+                      <div class="control-name">Density</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="sky04"> 
+                      </div>
+                  </div>                 
+                    
+                  <div class="grid-item">
+                    <div class="control-name">Opacity</div>
+                    <div class="control">
+                      <input type="range" min="0" max="1" step="0.01" class="slider" id="clouds02">
+                    </div>
+                  </div>
+                    
+                  <div class="grid-item">
+                    <div class="control-name">Y-Max</div>
+                    <div class="control">
+                      <input type="range" min="-0.1" max="1.1" step="0.01" class="slider" id="clouds03">
+                    </div>
+                  </div>
+                    
+                  <div class="grid-item">
+                    <div class="control-name">Y-Min</div>
+                    <div class="control">
+                      <input type="range" min="-0.1" max="1.1" step="0.01" class="slider" id="clouds04">
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div id="Support" class="tabcontent">
+
+                <div id="support-tab">
+                  
+                  <div class="support-message-container" > 
+                    <div></div>   
+                    <div class="support-note">                
+                    Hey! This is Brian.<br>
+                    <br>
+                    If you downloaded a background or just think what I'm doing is cool, 
+                    feel free to show your support by getting me a cup of coffee or a pint of cider :)<br>
+                    <br>
+                    I'd really appreciate it!
+                    </div>
+                    <div></div> 
+                  </div>
+
+                  <div class="support-message-container">
+                    <div></div>
+                    <div class="support-note">
+                    You can throw a few bucks directly to my VENMO<br>
+                    <br>
+                    @brian-gawlik<br>
+                    <br>
+                    Let me know what you got me, and I'll make a special toast to you.
+                    </div>
+                    <div></div> 
+                  </div>
+
+                  <div class="support-message-container">
+                    <div></div>
+                    <!-- <object id="svg1" data="line.svg" type="image/svg+xml"  height="12px" width="100%"></object> -->
+                    <div class="support-note">
+                    If you want to stay up-to-date with my generative art journey, follow me on IG 
+                    <a href="https://www.instagram.com/brian_gawlik/?hl=en">@brian_gawlik</a>
+                    <!-- <a href="https://www.instagram.com/brian_gawlik/?hl=en">
+                      <img src="IG_Logo.svg" width="10em"/>
+                    </a> -->
+                    </div>
+                    <div></div> 
+                  </div>
+
+                  <div class="support-message-container">
+                    <div> 
+                      <a href="https://www.instagram.com/brian_gawlik/?hl=en">
+                        <img src="chatPic.png" width="80%"/>
+                      </a>
+                    </div>
+                    <div class="support-note">Thanks!</div>
+                    <div id="thanks"></div> 
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
+              
+
+            <!-- </div> -->
+
+            <!-- TABS SCRIPT -->
+            <script>
+            function openCity(evt, tabName) {
+
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+
+              tablinks = document.getElementsByClassName("tablinks");
+
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+              }
+
+              document.getElementById(tabName).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+
+            // open default tab
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+
+            </script>
+
+            <!-- <div class="infobox" id="infobox">Hey, this is where I'll provide helpful info about the app.</div> -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    
+
+
+
+    
+  </body>
+
+</html>
