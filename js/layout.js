@@ -42,6 +42,6 @@ function handleResize() {
     // drawingContainer.setAttribute('height', h);
   
     updateBG();
-    reseed();
+    redraw();
   
   };
