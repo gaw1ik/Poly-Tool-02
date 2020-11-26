@@ -31,10 +31,12 @@ window.onload = function() {
   polyglot1 = new polyglot(); // new prototype
   sky1 = new sky();
 
+  handleResize(); 
+
   loadPreset1();
   // computeAndDraw0();
 
-  handleResize(); 
+  
 
 }
 
