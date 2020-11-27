@@ -81,7 +81,7 @@ function loadPreset1() {
   c04.value = 0.5; // yCenter
   c05.value = 0.1; // startAngle
   c06.value = 0.0; // weight
-  c07.value = 0.06; // nPolys
+  c07.value = 0.07; // nPolys
   c08.value = 0.5; // thetaRot
   c09.value = 0.5; // sizeIncFactor
   c10.value = 0.1; // hueCenter
