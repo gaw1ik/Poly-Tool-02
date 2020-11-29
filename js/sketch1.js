@@ -5,8 +5,8 @@ function polyglot() {
   this.nSides;
   this.size;
 
-  this.Xcenter;
-  this.Ycenter;
+  this.xCenter;
+  this.yCenter;
   this.thetad0;
 
   this.weight;
@@ -21,6 +21,14 @@ function polyglot() {
 
   this.warble;
 
+  this.polys;
+
+  this.pointSize;
+
+}
+
+function poly() {
+  this.coords;
 }
 
 //// sky class
@@ -50,6 +58,9 @@ function recalc() {
 
   updateValues(); // update the values
 
+  var thisPolyglot = Object.create(polyglot1);
+  // console.log("thisPolyglot",thisPolyglot);
+  polyglot1 = calcPolyglot(thisPolyglot);
   redraw();
 
 }
@@ -76,11 +87,11 @@ function redraw() { // (redraw trees only)
 function loadPreset1() {
 
   c01.value = 5; // nSides
-  c02.value = 0.1; // size
+  c02.value = 0.14; // size
   c03.value = 0.5; // xCenter
   c04.value = 0.5; // yCenter
   c05.value = 0.1; // startAngle
-  c06.value = 0.0; // weight
+  c06.value = 0.1; // weight
   c07.value = 0.07; // nPolys
   c08.value = 0.5; // thetaRot
   c09.value = 0.5; // sizeIncFactor
@@ -88,6 +99,10 @@ function loadPreset1() {
   c11.value = 0.5; // satCenter
   c12.value = 0.5; // litCenter
   c13.value = 0.0; // warble
+  c14.checked = 1.0; // lineMode
+  c15.checked = 1.0; // pointMode
+  c16.value = 0; // pointSize
+
 
   sky01.value = 0.7;
   sky02.value = 0.3;
@@ -97,8 +112,8 @@ function loadPreset1() {
 
   recalc();
 
-  redraw();
+  // redraw();
 
-  drawBG(ctx2);
+  // drawBG(ctx2);
 
 }

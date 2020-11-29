@@ -29,11 +29,14 @@ window.onload = function() {
 
   // New Prototypes
   polyglot1 = new polyglot(); // new prototype
+  poly1 = new poly();
   sky1 = new sky();
+
+  loadPreset1();
 
   handleResize(); 
 
-  loadPreset1();
+  
   // computeAndDraw0();
 
   
@@ -70,58 +73,69 @@ document.addEventListener('DOMContentLoaded', function() {
 // #region //// Assign controls
 document.addEventListener('DOMContentLoaded', function() {
 
-    // nTrees;
+    // nSides;
     var c01 = document.getElementById("c01");
     c01.addEventListener('input',recalc);
 
-    // nTrees;
+    // size;
     var c02 = document.getElementById("c02");
     c02.addEventListener('input',recalc);
 
-    // nTrees;
+    // xCenter;
     var c03 = document.getElementById("c03");
     c03.addEventListener('input',recalc);
 
-    // nLevels;
+    // yCenter;
     var c04 = document.getElementById("c04");
     c04.addEventListener('input',recalc);
 
-    // nLevels;
+    // startAngle;
     var c05 = document.getElementById("c05");
     c05.addEventListener('input',recalc);
 
-    // branchHCenter;
+    // Weight;
     var c06 = document.getElementById("c06"); 
-    c06.addEventListener('input',recalc);
+    c06.addEventListener('input',redraw);
     
-    // branchSCenter;
+    // nPolys;
     var c07 = document.getElementById("c07");
     c07.addEventListener('input',recalc);
 
-    // branchLCenter;
+    // thetaRot;
     var c08 = document.getElementById("c08");
     c08.addEventListener('input',recalc);
 
-    // rarity;
+    // SizeIncFactor;
     var c09 = document.getElementById("c09");
     c09.addEventListener('input',recalc);
 
-    // angleChange;
+    // hueCenter;
     var c10 = document.getElementById("c10");
-    c10.addEventListener('input',recalc);
+    c10.addEventListener('input',redraw);
 
-    // segDiv;
+    // satCenter;
     var c11 = document.getElementById("c11");
-    c11.addEventListener('input',recalc);
+    c11.addEventListener('input',redraw);
 
-    // segDiv;
+    // litCenter;
     var c12 = document.getElementById("c12");
-    c12.addEventListener('input',recalc);
+    c12.addEventListener('input',redraw);
 
-            // segDiv;
+    // warble;
     var c13 = document.getElementById("c13");
     c13.addEventListener('input',recalc);
 
+    // lineMode;
+    var c14 = document.getElementById("c14");
+    c14.addEventListener('input',redraw);
+
+    // pointMode;
+    var c15 = document.getElementById("c15");
+    c15.addEventListener('input',redraw);
+
+    // pointSize;
+    var c16 = document.getElementById("c16");
+    c16.addEventListener('input',redraw);
 
 
     // Sky Controls
@@ -169,8 +183,8 @@ function updateValues() {
     // Polyglot params
     polyglot1.nSides = parseFloat(c01.value,10);
     polyglot1.size = parseFloat(c02.value,10);  
-    polyglot1.Xcenter = parseFloat(c03.value,10);
-    polyglot1.Ycenter = parseFloat(c04.value,10);
+    polyglot1.xCenter = parseFloat(c03.value,10);
+    polyglot1.yCenter = parseFloat(c04.value,10);
     polyglot1.thetad0 = parseFloat(c05.value,10);
     polyglot1.weight = parseFloat(c06.value,10);
     polyglot1.nPolys = parseFloat(c07.value,10);
@@ -180,6 +194,11 @@ function updateValues() {
     polyglot1.satCenter = parseFloat(c11.value,10);
     polyglot1.litCenter = parseFloat(c12.value,10);
     polyglot1.warble = parseFloat(c13.value,10);
+
+    lineMode = c14.checked;
+    pointMode = c15.checked;
+
+    polyglot1.pointSize = parseFloat(c16.value,10);
  
     // Sky params
     sky1.hCenter = parseFloat(sky01.value,10);
