@@ -11,6 +11,16 @@ function drawPolyglot( polyglot, ctx )
     var hueCenter = normal2range(polyglot.hueCenter,0,255);
     var satCenter = normal2range(polyglot.satCenter,0,100);
     var litCenter = normal2range(polyglot.litCenter,0,100);
+    var alpha = normal2range(polyglot.alpha,0,0.1);
+
+    var fillOn = polyglot.fillOn; 
+
+    var maxColorVariation = normal2range(polyglot.colorVariation ,0 , 100);
+
+    var maxHueVariation = maxColorVariation;
+    var maxSatVariation = maxColorVariation;
+    var maxLitVariation = maxColorVariation;
+    
 
 
 
@@ -24,9 +34,9 @@ function drawPolyglot( polyglot, ctx )
     for (let j = 0; j < polys.length; j += 1) 
     {
 
-        hue = hueCenter * overunder(10);
-        sat = satCenter * overunder(10);
-        lit = litCenter * overunder(10);
+        hue = hueCenter + plusOrMinusMax(maxHueVariation);
+        sat = satCenter + plusOrMinusMax(maxSatVariation);
+        lit = litCenter + plusOrMinusMax(maxLitVariation);
 
         ctx.strokeStyle = 'hsl(' + hue + ', ' +  sat + '%, ' + lit + '%'  +')';    
         ctx.lineWidth = weight*overunder(50);
@@ -57,6 +67,11 @@ function drawPolyglot( polyglot, ctx )
                 
             ctx.stroke();
 
+            if(fillOn==1) {
+                ctx.fillStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';  
+                ctx.fill();
+            }
+
         }
 
         if(pointMode==1)
@@ -73,6 +88,11 @@ function drawPolyglot( polyglot, ctx )
                 ctx.ellipse(x, y, pointSize, pointSize, 0, 0, 2*Math.PI);
                 // ctx.rect(x-pointSize/2, y-pointSize/2, pointSize, pointSize);
                 ctx.stroke();
+
+                if(fillOn==1) {
+                    ctx.fillStyle = 'hsla(' + hue + ', ' +  sat + '%, ' + lit + '%,'  + alpha + ')';  
+                    ctx.fill();
+                }
 
             }
 

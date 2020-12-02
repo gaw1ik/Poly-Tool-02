@@ -16,6 +16,11 @@ function plusOrMinus(amount) {
   return (Math.round(myrng()) * 2 - 1) * amount;
 }
 
+function plusOrMinusMax(max) {
+  var randInt = getRandomInt(0,max);
+  return (Math.round(myrng()) * 2 - 1) * randInt;
+}
+
 function overunder(perc) {
   return myrng() * (2 * perc / 100) + (1 - perc / 100);
 }

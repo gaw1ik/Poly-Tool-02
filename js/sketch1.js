@@ -18,6 +18,9 @@ function polyglot() {
   this.hueCenter;
   this.satCenter;
   this.litCenter;
+  this.alpha;
+  this.colorVariation
+  this.fillOn;
 
   this.warble;
 
@@ -99,14 +102,17 @@ function loadPreset1() {
   c11.value = 0.5; // satCenter
   c12.value = 0.5; // litCenter
   c13.value = 0.0; // warble
-  c14.checked = 1.0; // lineMode
-  c15.checked = 1.0; // pointMode
-  c16.value = 0; // pointSize
+  c14.checked = 1; // lineMode
+  c15.checked = 1; // pointMode
+  c16.value = 0.01; // pointSize
+  c17.value = 0.3; // colorVariation
+  c18.checked = 0; // fillOn
+  c19.value = 0.1; //alpha
 
 
   sky01.value = 0.7;
   sky02.value = 0.3;
-  sky03.value = 0.8;
+  sky03.value = 0.2;
 
   updateValues();
 

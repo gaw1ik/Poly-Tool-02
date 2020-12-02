@@ -137,6 +137,18 @@ document.addEventListener('DOMContentLoaded', function() {
     var c16 = document.getElementById("c16");
     c16.addEventListener('input',redraw);
 
+    // colorVariation
+    var c17 = document.getElementById("c17");
+    c17.addEventListener('input',redraw);
+
+    // fillOn
+    var c18 = document.getElementById("c18");
+    c18.addEventListener('input',redraw);
+
+    // alpha
+    var c19 = document.getElementById("c19");
+    c19.addEventListener('input',redraw);
+
 
     // Sky Controls
     // hSky;
@@ -199,6 +211,12 @@ function updateValues() {
     pointMode = c15.checked;
 
     polyglot1.pointSize = parseFloat(c16.value,10);
+    polyglot1.colorVariation = parseFloat(c17.value,10);
+
+
+    polyglot1.fillOn = c18.checked;
+
+    polyglot1.alpha = parseFloat(c19.value,10);
  
     // Sky params
     sky1.hCenter = parseFloat(sky01.value,10);

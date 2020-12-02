@@ -89,20 +89,21 @@
               <!-- Poly1 -->
               <div id="Poly1" class="tabcontent">
 
-                <h3>Poly Properties</h3>
+                <h3>Poly 1</h3>
                 <div class="input-section"> 
 
+                  <h4>Modes</h4>
                   <div class="grid-container-2xN">
 
                     <div class="grid-item">
-                      <div class="control-name">Lines On/Off</div>
+                      <div class="control-name">Line Mode</div>
                       <div class="control">
                         <input type="checkbox" id="c14"/><br>
                       </div>
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">Points On/Off</div>
+                      <div class="control-name">Points Mode</div>
                       <div class="control">
                         <input type="checkbox" id="c15"/><br>
                       </div>
@@ -110,6 +111,7 @@
 
                   </div>                                   
                   
+                  <h4>Poly Stack Properties</h4>
                   <div class="grid-container">
 
                     <div class="grid-item">
@@ -120,21 +122,21 @@
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">N Polys</div>
+                      <div class="control-name">Number of Polygons</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider" id="c07"/><br>
                       </div>
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">thetaRot</div>
+                      <div class="control-name">Rotation Accumulation</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider" id="c08"/><br>
                       </div>
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">SizeIncFactor</div>
+                      <div class="control-name">Size Accumulation</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider" id="c09"/><br>
                       </div>
@@ -149,14 +151,27 @@
 
                   </div>
 
+                  <h4>Size</h4>
                   <div class="grid-container">
 
                     <div class="grid-item">
-                      <div class="control-name">Size</div>
+                      <div class="control-name">Poly Size</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider" id="c02"/><br>
                       </div>
                     </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Point Size</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.001" class="slider" id="c16"/><br>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <h4>Location/Orientation</h4>
+                  <div class="grid-container">
 
                     <div class="grid-item">
                       <div class="control-name">X-Center</div>
@@ -181,40 +196,60 @@
 
                   </div>
 
-                  <div class="grid-container">                  
-
+                  <h4>Color</h4>
+                  <div class="grid-container">  
+                    
                     <div class="grid-item">
-                      <div class="control-name">Weight</div>
+                      <div class="control-name">Stroke Weight</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider" id="c06"/><br>
                       </div>
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">Point Size</div>
-                      <div class="control">
-                        <input type="range" min="0" max="1" step="0.001" class="slider" id="c16"/><br>
-                      </div>
-                    </div>
-
-                    <div class="grid-item">
-                      <div class="control-name">Hue</div>
+                      <div class="control-name">Hue Center</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider-hue" id="c10"/><br>
                       </div>
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">Saturation</div>
+                      <div class="control-name">Saturation Center</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider-sat" id="c11"/><br>
                       </div>
                     </div>
 
                     <div class="grid-item">
-                      <div class="control-name">Lightness</div>
+                      <div class="control-name">Lightness Center</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider-lit" id="c12"/><br>
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Color Variation</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider-lit" id="c17"/><br>
+                      </div>
+                    </div>
+
+                    </div>
+
+                    <h4>Fill Stuff</h4>
+                    <div class="grid-container">
+
+                    <div class="grid-item">
+                      <div class="control-name">Fill On/Off</div>
+                      <div class="control">
+                        <input type="checkbox" id="c18"/><br>
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Opacity</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider-lit" id="c19"/><br>
                       </div>
                     </div>
 
@@ -227,9 +262,10 @@
               <!-- Sky -->
               <div id="BG" class="tabcontent">
 
-                <h3>Background Properties</h3>
+                <h3>Background</h3>
                 <div class="input-section">                    
                   
+                  <h4>Color</h4>
                   <div class="grid-container">
 
                     <div class="grid-item">
