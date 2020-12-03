@@ -217,7 +217,7 @@ button.preset:focus {
 
 }
 .slider-alpha {
-  background: linear-gradient(to right,hsl(200,50%,100%), hsl(200,50%,0%)) ;
+  background: linear-gradient(to right,hsla(200,50%,100%,0.0), hsl(200,50%,0%)) ;
 }
 
 .slider-hue::-webkit-slider-thumb,

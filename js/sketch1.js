@@ -57,7 +57,7 @@ function recalc() {
 
   console.log("re-calc");
 
-  myrng = new Math.seedrandom("1");
+  
 
   updateValues(); // update the values
 
@@ -87,7 +87,9 @@ function redraw() { // (redraw trees only)
 
 
 
-function loadPreset1() {
+function loadPreset0() {
+
+  polyglot1.seed = 1;
 
   c01.value = 5; // nSides
   c02.value = 0.14; // size
@@ -122,4 +124,27 @@ function loadPreset1() {
 
   // drawBG(ctx2);
 
+}
+
+function loadPreset3() {
+  polyglot1.seed = 1;
+  c01.value = 10 ; c02.value = 0.46 ; c03.value = 0.5 ; c04.value = 0 ; c05.value = 0.1 ; c06.value = 0 ; c07.value = 0.06 ; c08.value = 0 ; c09.value = 0.29 ; c10.value = 0.49 ; c11.value = 0.35 ; c12.value = 0.43 ; c13.value = 0 ; c14.checked = false ; c15.checked = true ; c16.value = 0.471 ; c17.value = 0.38 ; c18.checked = false ; c19.value = 0.1 ; sky01.value = 0.27 ; sky02.value = 0.3 ; sky03.value = 0.92 ;
+  updateValues();
+  recalc();
+  drawBG(ctx2);
+}
+
+function loadPreset2() {
+  polyglot1.seed = 1;
+  c01.value = 8 ; c02.value = 0.28 ; c03.value = 0.5 ; c04.value = 0.51 ; c05.value = 0.1 ; c06.value = 0.01 ; c07.value = 0.08 ; c08.value = 0.2 ; c09.value = 0.12 ; c10.value = 0 ; c11.value = 0.43 ; c12.value = 0.43 ; c13.value = 0 ; c14.checked = false ; c15.checked = true ; c16.value = 0.361 ; c17.value = 0.36 ; c18.checked = false ; c19.value = 0.03 ; sky01.value = 0.82 ; sky02.value = 0.63 ; sky03.value = 0.84 ;  
+  updateValues();
+  recalc();
+  drawBG(ctx2);
+}
+
+function loadPreset1() {
+  polyglot1.seed = 1;
+  c01.value = 9 ; c02.value = 0.28 ; c03.value = 0.5 ; c04.value = 0.51 ; c05.value = 0.1 ; c06.value = 0 ; c07.value = 0.11 ; c08.value = 0.21 ; c09.value = 0.06 ; c10.value = 0.1 ; c11.value = 0.91 ; c12.value = 0.36 ; c13.value = 0 ; c14.checked = true ; c15.checked = false ; c16.value = 0.361 ; c17.value = 0.7 ; c18.checked = false ; c19.value = 0.01 ; sky01.value = 1 ; sky02.value = 0.63 ; sky03.value = 0.06 ;  updateValues();
+  recalc();
+  drawBG(ctx2);
 }

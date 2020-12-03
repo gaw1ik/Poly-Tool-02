@@ -1,5 +1,7 @@
 function calcPolyglot( polyglot ) {
 
+    var seed = polyglot1.seed;
+
     var nSides = polyglot.nSides;
     var size = normal2range(polyglot.size,0,h);
     var xCenter = normal2range(polyglot.xCenter,0,w);
@@ -12,6 +14,8 @@ function calcPolyglot( polyglot ) {
 
     // console.log(hueCenter);
 
+
+    myrng = new Math.seedrandom(seed);
 
 
     // let thisPoly.coords = [];

@@ -32,7 +32,7 @@ window.onload = function() {
   poly1 = new poly();
   sky1 = new sky();
 
-  loadPreset1();
+  loadPreset0();
 
   handleResize(); 
 
@@ -45,7 +45,16 @@ window.onload = function() {
 
 
 
+function combine() {
+  
+  ctx.clearRect(0,0,w,h);
+  ctx2.clearRect(0,0,w,h);
 
+  drawBG(ctx);
+
+  drawPolyglot(polyglot1,ctx);
+
+}
 function saveImg() {
 
   combine();
@@ -226,16 +235,7 @@ function updateValues() {
 }
 
 
-function combine() {
-  
-  ctx.clearRect(0,0,w,h);
-  ctx2.clearRect(0,0,w,h);
 
-  drawBG(ctx);
-
-  drawPolyglot(polyglot1,ctx);
-
-}
 
 
 

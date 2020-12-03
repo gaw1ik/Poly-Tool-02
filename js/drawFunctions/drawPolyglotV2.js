@@ -2,6 +2,8 @@ function drawPolyglot( polyglot, ctx )
 {
 
     // pull in attributes
+    var seed = polyglot1.seed;
+    
     var polys = polyglot.polys;
 
     var pointSize = normal2range(polyglot.pointSize,0,1);
@@ -20,6 +22,9 @@ function drawPolyglot( polyglot, ctx )
     var maxHueVariation = maxColorVariation;
     var maxSatVariation = maxColorVariation;
     var maxLitVariation = maxColorVariation;
+
+
+    myrng = new Math.seedrandom(seed);
     
 
 
