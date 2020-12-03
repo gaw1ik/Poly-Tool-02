@@ -57,13 +57,13 @@
 
             <!-- TABS -->
             <div class="tab">
-              <button class="tablinks" onclick="openCity(event, 'Main')" name="Main">Home</button>
+              <button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen" name="Main">Home</button>
               <br>
-              <button class="tablinks" onclick="openCity(event, 'Poly1')" id="defaultOpen" name="Poly1">Poly_1</button>
+              <button class="tablinks" onclick="openCity(event, 'Poly1')" name="Poly1">Poly</button>
               
               <button class="tablinks" onclick="openCity(event, 'BG')" name="BG">BG</button>
               <br>
-              <button class="tablinks" onclick="openCity(event, 'Support')">Coffee</button>
+              <button class="tablinks" onclick="openCity(event, 'Support')" name="Support">Coffee</button>
             </div>
 
 
@@ -74,14 +74,47 @@
               <!-- Main -->
               <div id="Main" class="tabcontent">
 
-                <h3>Home</h3>
+                <!-- <h3>Home</h3> -->
+                <!-- <div class="support-message-container"> -->
+                  <!-- <div class="chat-icon">
+                    <img src="chatPic.png" width="50%""></img>
+                  </div> -->
+                  <div class="support-note">  
+                    <p>
+                      Hey, welcome to Poly-Tool! This is a little app that allows you to make cool geometric art 
+                      based on polygons. It's surprising how much you can do with this simple shape...<br>
+                    </p>
+                  </div>
+                <!-- </div> -->
 
-                <div class="input-section">  
+                <!-- <div class="support-message-container"> -->
+                  <div></div>
+                  <div class="support-note">
+                    <p>
+                      Check out these presets to see what Poly-Tool can do... <br>
+                      <br>
+                      <button type="button" class="preset" id="preset1">Preset 1</button>
+                      <button type="button" class="preset" id="preset2">Preset 2</button>
+                      <button type="button" class="preset" id="preset3">Preset 3</button><br>
+                      <br>
+                      Then, head over to the "Poly" tab 
+                      and get creative! In the "BG" tab you can change the color of the background.<br>
+                    </p>
+                  </div>
+              <!-- </div> -->
 
+                <!-- <div class="grid-container-4xN">
+                  <div>Presets:</div>
+                </div> -->
+
+                <div class="support-note">
+                  <p>
+                    If you think what you made is <b>dope af</b> you can download a png using this button (this may or may not work
+                    on mobile - sorry!). 
+                  </p>
                   <button type="button" class="reseed" id="save-img-button">Download Image</button>
                   <!-- INVISIBLE LINK FOR DOWNLOADING IMAGE -->
                   <a id="link"></a> 
-
                 </div>
 
               </div>
@@ -230,7 +263,7 @@
                     <div class="grid-item">
                       <div class="control-name">Color Variation</div>
                       <div class="control">
-                        <input type="range" min="0" max="1" step="0.01" class="slider-lit" id="c17"/><br>
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="c17"/><br>
                       </div>
                     </div>
 
@@ -249,7 +282,7 @@
                     <div class="grid-item">
                       <div class="control-name">Opacity</div>
                       <div class="control">
-                        <input type="range" min="0" max="1" step="0.01" class="slider-lit" id="c19"/><br>
+                        <input type="range" min="0" max="1" step="0.01" class="slider-alpha" id="c19"/><br>
                       </div>
                     </div>
 
@@ -295,6 +328,32 @@
       
               </div>
 
+              <!-- Support -->
+              <div id="Support" class="tabcontent">
+
+                <!-- <h3>Support</h3> -->
+                <!-- <div class="input-section">                     -->
+                  
+                  <!-- <h4>Support</h4> -->
+                  <div class="grid-container">     
+                    <p>                     
+                      If you saved what you made, had some fun, or just simply think this is cool,
+                      please consider buying me a coffee or a 4-pack of my favorite cider, Shacksbury Dry!<br>
+                      <br>
+                      You can throw a few bucks directly to my venmo <b>@brian-gawlik</b>. It would mean a lot!<br>
+                      <br>
+                      -Brian
+                    </p>                 
+                  </div>
+                  <br>
+                  <div class="chat-icon">
+                    <img src="chatPic.jpg" width="100%""></img>
+                  </div>
+
+                <!-- </div> -->
+      
+              </div>
+
             </div>
               
 
@@ -317,13 +376,21 @@
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
               }
 
+              // homelink = document.getElementsByClassName("homelink");
+
+              // homelink.className = homelink.className.replace(" active", ""); 
+
               document.getElementById(tabName).style.display = "block";
               evt.currentTarget.className += " active";
+
             }
 
             // open default tab
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
+
+
+
 
             </script>
 

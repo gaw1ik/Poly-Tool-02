@@ -51,7 +51,7 @@ function saveImg() {
   combine();
 
   var link = document.getElementById('link');
-  link.setAttribute('download', 'hereUGo.png');
+  link.setAttribute('download', 'dopeaf.png');
   link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
   link.click(); 
 

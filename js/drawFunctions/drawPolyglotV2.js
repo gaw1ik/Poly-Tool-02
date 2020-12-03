@@ -41,7 +41,7 @@ function drawPolyglot( polyglot, ctx )
         ctx.strokeStyle = 'hsl(' + hue + ', ' +  sat + '%, ' + lit + '%'  +')';    
         ctx.lineWidth = weight*overunder(50);
 
-        thisPoly = polys[j];
+        thisPoly = polys[polys.length-1-j];
         coords = thisPoly.coords;
 
         ctx.beginPath();
