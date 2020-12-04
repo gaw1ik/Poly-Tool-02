@@ -2,7 +2,9 @@ function drawPolyglot( polyglot, ctx )
 {
 
     // pull in attributes
-    var seed = polyglot1.seed;
+    var seed = polyglot.seed;
+
+    var scale = normal2range(polyglot.scale,0.1,4);
     
     var polys = polyglot.polys;
 
@@ -32,6 +34,9 @@ function drawPolyglot( polyglot, ctx )
     // normalize to canvas
     pointSize = pointSize * h;
     weight = weight * h;
+
+     // scale
+    pointSize = pointSize * scale;
 
     // lineMode=1;
     // pointMode=1;

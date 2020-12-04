@@ -1,6 +1,6 @@
 function calcPolyglot( polyglot ) {
 
-    var seed = polyglot1.seed;
+    var seed = polyglot.seed;
 
     var nSides = polyglot.nSides;
     var size = normal2range(polyglot.size,0,h);
@@ -11,6 +11,14 @@ function calcPolyglot( polyglot ) {
     var thetaRot = normal2range(polyglot.thetaRot,0,180);
     var sizeIncFactor = normal2range(polyglot.sizeIncFactor,1.00001,1.001);
     var warbleAmount = normal2range(polyglot.warble,0,h/100);
+
+
+    var scale = normal2range(polyglot.scale,0.1,4);
+
+    // scale
+    size = size * scale;
+
+    // sizeIncFactor = sizeIncFactor * scale; // scale
 
     // console.log(hueCenter);
 
@@ -35,6 +43,8 @@ function calcPolyglot( polyglot ) {
         thetar = (startAngle + thetaRot*j ) * Math.PI/180;
         // console.log(thetar);
         size = size * sizeIncFactor**j;
+
+        // size = size * scale; // scale
 
         // console.log("[amount]",[warbleAmount]);
         // console.log("[xCenter,yCenter]",[xCenter,yCenter]);

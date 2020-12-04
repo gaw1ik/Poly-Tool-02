@@ -158,6 +158,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var c19 = document.getElementById("c19");
     c19.addEventListener('input',redraw);
 
+    // scale
+    var c20 = document.getElementById("c20");
+    c20.addEventListener('input',recalc);
+
 
     // Sky Controls
     // hSky;
@@ -226,6 +230,8 @@ function updateValues() {
     polyglot1.fillOn = c18.checked;
 
     polyglot1.alpha = parseFloat(c19.value,10);
+
+    polyglot1.scale = parseFloat(c20.value,10);
  
     // Sky params
     sky1.hCenter = parseFloat(sky01.value,10);
