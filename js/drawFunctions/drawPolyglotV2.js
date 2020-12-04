@@ -84,7 +84,7 @@ function drawPolyglot( polyglot, ctx )
 
             ctx.moveTo(x0,y0);
             
-            for (let i = 1; i <= coords.length-1; i += 1)
+            for (let i = 0; i <= coords.length-1; i += 1)
             {
                 
                 x = coords[i][0];   y = coords[i][1];

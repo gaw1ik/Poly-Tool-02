@@ -81,8 +81,10 @@
                   </div> -->
                   <div class="support-note">  
                     <p>
-                      Hey, welcome to Poly-Tool! This is a little app that allows you to make geometric art 
-                      based on polygons. It's surprising how much you can do with this simple shape...<br>
+                      Hey, welcome to Poly-Tool - An app that allows you to make geometric art 
+                      based on polygons!<br>
+                      <br>
+                      It's surprising how much you can do with this simple geometry...<br>
                     </p>
                   </div>
                 <!-- </div> -->
@@ -97,8 +99,13 @@
                       <button type="button" class="preset" id="preset2" onclick="loadPreset2()">Preset 2</button>
                       <button type="button" class="preset" id="preset3" onclick="loadPreset3()">Preset 3</button><br>
                       <br>
-                      Then, head over to the "Poly" tab 
-                      and get creative! In the "BG" tab you can change the color of the background.<br>
+                      Cool huh?<br>
+                      <br>
+                      Now, head over to the "Poly" tab and make something unique! Preset 0 is a great starting point, which will show you what Poly-Tool does.<br>
+                      <br>
+                      <button type="button" class="preset" id="preset2" onclick="loadPreset0()">Preset 0</button><br>
+                      <br>
+                      Btw, Poly-Tool is going to work best on your PC. Your phone may have a hard time crunching all these big numbers.
                     </p>
                   </div>
               <!-- </div> -->
@@ -109,12 +116,17 @@
 
                 <div class="support-note">
                   <p>
-                    If you think what you made is <b>dope af</b> you can download a png using this button (this may or may not work
-                    on mobile - sorry!). 
+                    If you think what you made is <i>dope</i> you can download your image using this button, and definitely go check out that coffee tab... 
                   </p>
-                  <button type="button" class="reseed" id="save-img-button">Download Image</button>
+                  <br>
+                  <button type="button" class="reseed" id="save-img-button">Download Image</button><br>
+                  <br>
                   <!-- INVISIBLE LINK FOR DOWNLOADING IMAGE -->
                   <a id="link"></a> 
+                  <p>
+                    *This may or may not work on mobile. Sorry!. 
+                  </p>
+                  
                 </div>
 
               </div>
@@ -157,14 +169,7 @@
                     <div class="grid-item">
                       <div class="control-name">Number of Polygons</div>
                       <div class="control">
-                        <input type="range" min="0" max="1" step="0.01" class="slider" id="c07"/><br>
-                      </div>
-                    </div>
-
-                    <div class="grid-item">
-                      <div class="control-name">Rotation Accumulation</div>
-                      <div class="control">
-                        <input type="range" min="0" max="1" step="0.01" class="slider" id="c08"/><br>
+                        <input type="range" min="0" max="1" step="0.001" class="slider" id="c07"/><br>
                       </div>
                     </div>
 
@@ -172,6 +177,13 @@
                       <div class="control-name">Size Accumulation</div>
                       <div class="control">
                         <input type="range" min="0" max="1" step="0.01" class="slider" id="c09"/><br>
+                      </div>
+                    </div>
+
+                    <div class="grid-item">
+                      <div class="control-name">Rotation Accumulation</div>
+                      <div class="control">
+                        <input type="range" min="0" max="1" step="0.01" class="slider" id="c08"/><br>
                       </div>
                     </div>
 
@@ -340,7 +352,10 @@
                       If you saved what you made, had some fun, or just simply think this is cool,
                       please consider buying me a coffee or a 4-pack of my favorite cider, Shacksbury Dry!<br>
                       <br>
-                      You can throw a few bucks directly to my venmo <b>@brian-gawlik</b>. It would mean a lot!<br>
+                      You can throw a few bucks directly to my venmo<br><br>
+                      <b>@brian-gawlik</b><br>
+                      <br>
+                      It would mean a lot!<br>
                       <br>
                       -Brian
                     </p>                 
