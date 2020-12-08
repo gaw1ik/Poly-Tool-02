@@ -56,6 +56,17 @@ function updateBG() {
 
 }
 
+function bumpNSidesUp() {
+  polyglot1.nSides = polyglot1.nSides + 1; 
+  c01.value = polyglot1.nSides;
+  recalc();
+}
+function bumpNSidesDown() {
+  // seedValue = seedValue - 1;
+  polyglot1.nSides = polyglot1.nSides - 1; 
+  c01.value = polyglot1.nSides;
+  recalc();
+}
 
 function recalc() { 
 

@@ -162,6 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var c20 = document.getElementById("c20");
     c20.addEventListener('input',recalc);
 
+    // bumpNSidesDown
+    var c21 = document.getElementById("c21");
+    c21.addEventListener('click',bumpNSidesDown);
+    // bumpNSidesUp
+    var c22 = document.getElementById("c22");
+    c22.addEventListener('click',bumpNSidesUp);
+
 
     // Sky Controls
     // hSky;
