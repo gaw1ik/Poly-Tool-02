@@ -4,7 +4,7 @@ window.onload = function() {
 
   ////////////////////////////////////////////////////////////// DOCUMENT INPUTS
   scale = 1;
-  aspectRatio = 8/10;
+  aspectRatio = 8/8;
 
   // Scaling Stuff
   /// get DPI
@@ -29,10 +29,11 @@ window.onload = function() {
 
   // New Prototypes
   polyglot1 = new polyglot(); // new prototype
-  poly1 = new poly();
+  poly1 = new poly(); //*********
   sky1 = new sky();
 
-  loadPreset0();
+  loadPreset0(); //*********
+  drawBG(ctx2);
 
   handleResize(); 
 

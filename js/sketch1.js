@@ -108,9 +108,12 @@ function loadPreset0() {
 
   c01.value = 5 ; c02.value = 0.29 ; c03.value = 0.5 ; c04.value = 0.5 ; c05.value = 0.1225 ; c06.value = 0.1 ; c07.value = 0.001 ; c08.value = 0.25 ; c09.value = 0.6 ; c10.value = 0.1 ; c11.value = 0.5 ; c12.value = 0.5 ; c13.value = 0 ; c14.checked = true ; c15.checked = true ; c16.value = 0.01 ; c17.value = 0.1 ; c18.checked = false ; c19.value = 0.1 ; sky01.value = 0.7 ; sky02.value = 0.3 ; sky03.value = 0.2 ;
   c20.value = 0.24;
+
+  sky01.value = 50; sky02.value = 0; sky03.value = 0.1;
+
   updateValues();
   recalc();
-  drawBG(ctx2);
+  updateBG();
 
   // redraw();
 

@@ -1,3 +1,6 @@
+
+
+
 function drawPolyglot( polyglot , ctx) {
 
     nSides = normal2range(polyglot.nSides,2,30;

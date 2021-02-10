@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Poly-Tool</title>
+    <title>Poly-Tool-02</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
@@ -22,7 +22,7 @@
     <script src="js/drawFunctions/drawBG.js"></script>
     <script src="js/drawFunctions/drawPolyglotV2.js"></script>
 
-    <script src="js/drawFunctions/calcPolyglot.js"></script>
+    <script src="js/drawFunctions/calcPolyGlot.js"></script>
 
     <script src="js/layout.js"></script>
     <script src="js/sketch1.js"></script>
@@ -32,38 +32,32 @@
 
   <body>
 
-    <div id="container">
+    <div id="site-container">
       <div class="app-container">
 
         <!-- DRAWING -->
-        <div class="app-container-item">
           <!-- THE CANVAS -->
           <div id="drawing-container">
+            <div id="canvas-container">
             <!-- TREES LAYER -->
                 <canvas id="layer1"></canvas> 
             <!-- BG LAYERS -->
                 <canvas id="layer2"></canvas>
+            </div>
           </div>
-
-
-
-        </div>
-
-        <!-- GUI -->
-        <div class="app-container-item">
 
           <!-- THE GUI -->
           <div class="input-form-container" id="input-form-container">
 
             <!-- TABS -->
             <div class="tab">
-              <button class="tablinks" onclick="openCity(event, 'Main')" id="defaultOpen" name="Main">Home</button>
-              <br>
-              <button class="tablinks" onclick="openCity(event, 'Poly1')" name="Poly1">Poly</button>
               
-              <button class="tablinks" onclick="openCity(event, 'BG')" name="BG">BG</button>
+              <button class="tablinks" onclick="openCity(event, 'Poly1')" name="Poly1">Poly</button>              
+              <button class="tablinks" onclick="openCity(event, 'BG')" id="defaultOpen" name="BG">BG</button>
               <br>
-              <button class="tablinks" onclick="openCity(event, 'Support')" name="Support">Coffee</button>
+              <button class="tablinks" onclick="openCity(event, 'Main')"  name="Main">Info</button>
+              <!-- <br> -->
+              <!-- <button class="tablinks" onclick="openCity(event, 'Support')" name="Support">Coffee</button> -->
             </div>
 
 
@@ -134,8 +128,8 @@
               <!-- Poly1 -->
               <div id="Poly1" class="tabcontent">
 
-                <h3>Poly 1</h3>
-                <div class="input-section"> 
+                <!-- <h3>Poly 1</h3> -->
+                <!-- <div class="input-section">  -->
 
                   <h4>Modes</h4>
                   <div class="grid-container-2xN">
@@ -290,7 +284,7 @@
 
                     </div>
 
-                    <h4>Fill Stuff</h4>
+                  <h4>Fill Stuff</h4>
                     <div class="grid-container">
 
                     <div class="grid-item">
@@ -309,15 +303,15 @@
 
                   </div>
 
-                </div>
+                <!-- </div> -->
       
               </div>
 
               <!-- Sky -->
               <div id="BG" class="tabcontent">
 
-                <h3>Background</h3>
-                <div class="input-section">                    
+                <!-- <h3>Background</h3> -->
+                <!-- <div class="input-section">                     -->
                   
                   <h4>Color</h4>
                   <div class="grid-container">
@@ -345,51 +339,10 @@
                 
                   </div>
 
-                </div>
-      
-              </div>
-
-              <!-- Support -->
-              <div id="Support" class="tabcontent">
-
-                <!-- <h3>Support</h3> -->
-                <!-- <div class="input-section">                     -->
-                  
-                  <!-- <h4>Support</h4> -->
-                  <div class="grid-container">     
-                    <p>                     
-                      Poly-Tool is the first application of any kind that I've made. It's not perfect, 
-                      but I reckon it makes for a pretty good time, and I want to continue making better
-                      <i>and better</i> versions of similar apps. I have some bigger ideas, as well...
-                    </p>
-                    <p>
-                      If you had some fun with Poly-Tool, downloaded an image for your desktop, or generally just want to support me and the future growth of
-                      this project, you can do so by throwing some cash my way for things like coffee and cider. Here's a few suggestions for amounts: $3, $5, $10, $20.
-                      <p>                     
-                         You can find me on venmo.<br><br>
-                        <b>@brian-gawlik</b>
-                      </p>
-                      
-                      <p>
-                      It would <i>genuinely</i> make a difference!
-                    </p>
-                    <p>
-                      Not on venmo? Let's talk, and also answer the question: Is it me or you that's out of touch?
-                    </p>
-                    <p>
-                      Thank you!<br><br>
-                      -Brian
-                    </p>
-                                    
-                  </div>
-                  <br>
-                  <div class="chat-icon">
-                    <img src="chatPic.jpg" width="100%""></img>
-                  </div>
-
                 <!-- </div> -->
       
               </div>
+
 
             </div>
               
@@ -398,43 +351,40 @@
 
             <!-- TABS SCRIPT -->
             <script>
-            function openCity(evt, tabName) {
+              function openCity(evt, tabName) {
 
-              var i, tabcontent, tablinks;
-              tabcontent = document.getElementsByClassName("tabcontent");
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
 
-              for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+                for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+                }
+
+                tablinks = document.getElementsByClassName("tablinks");
+
+                for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                // homelink = document.getElementsByClassName("homelink");
+
+                // homelink.className = homelink.className.replace(" active", ""); 
+
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+
               }
 
-              tablinks = document.getElementsByClassName("tablinks");
-
-              for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-              }
-
-              // homelink = document.getElementsByClassName("homelink");
-
-              // homelink.className = homelink.className.replace(" active", ""); 
-
-              document.getElementById(tabName).style.display = "block";
-              evt.currentTarget.className += " active";
-
-            }
-
-            // open default tab
-            // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-
-
-
+              // open default tab
+              // Get the element with id="defaultOpen" and click on it
+              document.getElementById("defaultOpen").click();
 
             </script>
 
             <!-- <div class="infobox" id="infobox">Hey, this is where I'll provide helpful info about the app.</div> -->
 
           </div>
-        </div>
+
 
       </div>
     </div>
