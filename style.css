@@ -600,7 +600,7 @@ button.preset:focus {
     width:97%;
     grid-template-columns: 100%;
     grid-template-rows: calc(97vh/2 - 0.5rem) calc(97vh/2 - 0.5rem);
-    height: 97%;
+    height: 97vh;
     /* background-color: white; */
   }
 
