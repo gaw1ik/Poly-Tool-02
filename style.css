@@ -586,9 +586,9 @@ button.preset:focus {
   #site-container{
     align-items: flex-start;
 
-    height: calc(100vh + 100px);
+    /* height: calc(100vh + 100px); */
 
-    background: linear-gradient(hsl(0,0%,var(--bgLit1)), hsl(0,0%,var(--bgLit2)));
+    /* background: linear-gradient(hsl(0,0%,var(--bgLit1)), hsl(0,0%,var(--bgLit2))); */
 
     /* background: none; */
     /* background-color: red; */
