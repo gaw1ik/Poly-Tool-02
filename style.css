@@ -586,7 +586,7 @@ button.preset:focus {
   #site-container{
     align-items: flex-start;
 
-    position: fixed;
+    
 
     /* height: calc(100vh + 100px); */
 
@@ -598,6 +598,7 @@ button.preset:focus {
 
   .app-container {
     /* position: absolute; */
+    position: fixed;
     /* top: 100px; */
     width:97%;
     grid-template-columns: 100%;
@@ -615,6 +616,7 @@ button.preset:focus {
   #drawing-container{
     width: 100%;
     height: 100%;
+    
   }
 
   .slider-hue::-webkit-slider-thumb,
