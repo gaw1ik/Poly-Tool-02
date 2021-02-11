@@ -584,7 +584,7 @@ button.preset:focus {
 @media (max-aspect-ratio: 1/1) {
 
   #site-container{
-    align-items: flex-start;
+    /* align-items: flex-start; */
 
     
 
@@ -598,7 +598,7 @@ button.preset:focus {
 
   .app-container {
     /* position: absolute; */
-    position: fixed;
+    /* position: fixed; */
     /* top: 100px; */
     width:97%;
     grid-template-columns: 100%;
