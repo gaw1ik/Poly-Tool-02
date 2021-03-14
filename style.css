@@ -1,3 +1,15 @@
+/* TABLE OF CONTENTS
+  0. variables
+  1. global styles
+  2. typography
+  3. layout
+  4. components */
+
+
+/* =============
+   variables
+   ============= */
+
 :root {
   --borderThickness:0px;
   --canvBorderThickness:4px;
@@ -39,6 +51,15 @@
   /* --canvasBgColor:rgba(0, 0, 0, 0.02); */
 }
 
+
+
+
+
+
+/* =============
+   global styles
+   ============= */
+
 html {
   margin: 0;
   font-size: calc(1em + 0.3vmax);
@@ -59,16 +80,21 @@ body {
   box-sizing: border-box;
 }
 
-p {
-  margin:5px;
-  font-size:0.7rem;
-}
+
+
+
+/* =============
+   typography
+   ============= */
+
+
 h2 {
   margin-left: 10px;
   margin-bottom: 5px;
   margin-top:10px;
   text-decoration: underline;
 }
+
 h3 {
   /* font-size: 12pt; */
   font-size: 1rem;
@@ -77,6 +103,7 @@ h3 {
   margin-top:5px;
   /* text-align: center; */
 }
+
 h4 {
   /* font-size: 8; */
   font-size: 0.8rem;
@@ -88,13 +115,16 @@ h4 {
   margin-top:0.5rem;
 }
 
-
-
-
-textarea {
-  width: 90%;
+p {
+  margin:5px;
+  font-size:0.7rem;
 }
 
+
+
+/* =============
+   components
+   ============= */
 
 input {
   width: 10ch;
@@ -112,10 +142,12 @@ input {
   background-color:hsl(250,30%,50%);
   box-shadow: inset 1px 1px 2px gray;
 }
+
 input:focus {
   /* border: 2px solid black; */
   background-color:  rgba(255, 236, 127, 0.721);
 }
+
 input.b {
   background-color: hsl(200,50%,90%);
 }
@@ -210,6 +242,7 @@ button.preset:focus {
 
 }
 
+.slider,
 .slider-hue,
 .slider-sat,
 .slider-lit,
@@ -217,9 +250,15 @@ button.preset:focus {
   -webkit-appearance: none;
   width: 100%;
   height: 0.2rem;
+  background: hsl(200,50%,50%);
   outline: none;
+  margin:0;
   -webkit-transition: .2s;
   transition: opacity .2s;
+}
+
+.slider:focus {
+  background: hsl(200,50%,40%);
 }
 
 .slider-hue {
@@ -227,9 +266,10 @@ button.preset:focus {
   red,orange,yellow,green,turquoise,blue,violet) ;
 }
 .slider-sat {
+  /* background: linear-gradient(to right,hsl(60,0%,50%), hsl(60,100%,50%)); */
 }
 .slider-lit {
-  background: linear-gradient(to right,hsl(200,50%,0%), hsl(200,50%,100%)) ;
+  background: linear-gradient(to right,hsl(200,50%,0%), hsl(200,50%,100%));
 
 }
 .slider-alpha {
@@ -252,39 +292,6 @@ button.preset:focus {
 
 
 
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 0.2rem;
-  background: hsl(200,50%,50%);
-  outline: none;
-  margin:0;
-  /* border: 1px solid black; */
-  /* opacity: 0.7; */
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-.slider:hover {
-  opacity: 1;
-}
-.slider:focus {
-  background: hsl(200,50%,40%);
-}
-/* .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 1rem;
-  background: hsla(0,0%,50%,0.8);
-  cursor: grab;
-} */
-/* .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
-} */
 
 
 .checkboxes label {
@@ -298,6 +305,23 @@ button.preset:focus {
 .checkboxes label span {
   vertical-align: middle;
 }
+
+/* width */
+::-webkit-scrollbar { width: 3px;}
+/* Track */
+::-webkit-scrollbar-track { background: #ababab; border-radius: 10px; border: 20px; margin:20px;}
+/* Handle */
+::-webkit-scrollbar-thumb { background: rgb(88, 88, 88); border-radius: 10px;}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+
+
+
+
+/* =============
+   layout
+   ============= */
 
 
 #site-container {
@@ -536,7 +560,7 @@ button.preset:focus {
 }
 
 
-/* tree layer */
+/* polyglot layer */
 #layer1 { 
 
   
@@ -576,110 +600,6 @@ button.preset:focus {
   /* filter: blur(5px); */
   
 }
-
-
-
-/* VERTICAL SCREEN */
-
-@media (max-aspect-ratio: 1/1) {
-
-  #site-container{
-    /* align-items: flex-start; */
-
-    
-
-    /* height: calc(100vh + 100px); */
-
-    /* background: linear-gradient(hsl(0,0%,var(--bgLit1)), hsl(0,0%,var(--bgLit2))); */
-
-    /* background: none; */
-    /* background-color: red; */
-  }
-
-  .app-container {
-    /* position: absolute; */
-    /* position: fixed; */
-    /* top: 100px; */
-    width:97%;
-    grid-template-columns: 100%;
-    grid-template-rows: calc(97vh/2 - 0.5rem) calc(97vh/2 - 0.5rem);
-    height: 97vh;
-    /* background-color: white; */
-  }
-
-  .input-form-container {
-    width: 100%;  
-    height: 100%;    
-    grid-template-rows: auto 1fr ;
-  }
-
-  #drawing-container{
-    width: 100%;
-    height: 100%;
-    
-  }
-
-  .slider-hue::-webkit-slider-thumb,
-  .slider-sat::-webkit-slider-thumb,
-  .slider-lit::-webkit-slider-thumb,
-  .slider-alpha::-webkit-slider-thumb,
-  .slider::-webkit-slider-thumb {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-}
-
-
-
-
-/* @media (max-width: 1000px) {
-  .app-container-item {
-    flex: 100%;
-  }
-} */
-
-#overlay-grad {
-  position:absolute;
-  z-index:1;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-.line-sep {
-  padding: 0 10px;
-}
-
-
-/* width */
-::-webkit-scrollbar { width: 3px;}
-/* Track */
-::-webkit-scrollbar-track { background: #ababab; border-radius: 10px; border: 20px; margin:20px;}
-/* Handle */
-::-webkit-scrollbar-thumb { background: rgb(88, 88, 88); border-radius: 10px;}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover { background: #555; }
-
-
-
-
-
 
 /* slider controls grid */
 .grid-container {
@@ -827,39 +747,6 @@ button.preset:focus {
 
 
 
-.controls-form {
-  padding: 10px;
-  /* margin:auto; */
-  /* max-width: 100%; */
-  /* white-space: nowrap; */
-  /* text-align: left; */
-}
-
-
-
-
-.button-rail {
- display:flex;
- flex-direction: column;
- /* margin: 0 10px; */
-}
-
-
-
-
-
-
-/* leaf canvas */
-#leafCanvas {
-  /* width: inherit; */
-  width: 50%;
-  background-color: white;
-  box-shadow: 0px 0px 3px 0px gray;
-
-}
-
-
-
 
 /* Style the tab */
 .tab {
@@ -926,17 +813,53 @@ button.preset:focus {
 
 
 
+/* VERTICAL SCREEN */
+@media (max-aspect-ratio: 1/1) {
 
+  #site-container{
+    /* align-items: flex-start; */
 
+    
 
-.infobox {
-  border: 1px solid gray;
-  font-size: 8pt;
-  height:12pt;
-  margin:0px 10px;
-  overflow: hidden;
-  /* padding:10px 50px; */
-  background-color: hsl(70,80%,95%);
-  border-radius: 5px;
+    /* height: calc(100vh + 100px); */
+
+    /* background: linear-gradient(hsl(0,0%,var(--bgLit1)), hsl(0,0%,var(--bgLit2))); */
+
+    /* background: none; */
+    /* background-color: red; */
+  }
+
+  .app-container {
+    /* position: absolute; */
+    /* position: fixed; */
+    /* top: 100px; */
+    width:97%;
+    grid-template-columns: 100%;
+    grid-template-rows: calc(97vh/2 - 0.5rem) calc(97vh/2 - 0.5rem);
+    height: 97vh;
+    /* background-color: white; */
+  }
+
+  .input-form-container {
+    width: 100%;  
+    height: 100%;    
+    grid-template-rows: auto 1fr ;
+  }
+
+  #drawing-container{
+    width: 100%;
+    height: 100%;
+    
+  }
+
+  .slider-hue::-webkit-slider-thumb,
+  .slider-sat::-webkit-slider-thumb,
+  .slider-lit::-webkit-slider-thumb,
+  .slider-alpha::-webkit-slider-thumb,
+  .slider::-webkit-slider-thumb {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
 }
 

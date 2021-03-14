@@ -3,7 +3,7 @@ window.onload = function() {
   console.log("Window Loaded.");
 
   ////////////////////////////////////////////////////////////// DOCUMENT INPUTS
-  scale = 1;
+  scale = 2;
   aspectRatio = 8/8;
 
   // Scaling Stuff
@@ -34,6 +34,8 @@ window.onload = function() {
 
   loadPreset0(); //*********
   drawBG(ctx2);
+
+  updateColorSliders()
 
   handleResize(); 
 
@@ -201,7 +203,7 @@ function updateColorSliders() {
 
   for (i=0;i<sliderSat.length;i++) {
 
-    sliderSatHue = sliderHue[i].value;
+    sliderSatHue = sliderHue[i].value*360;
     var color1 = 'hsl(' + sliderSatHue + ', ' +  0 + '%, ' + 50 + '%)';
     var color2 = 'hsl(' + sliderSatHue + ', ' +  100 + '%, ' + 50 + '%)';
  
